@@ -1,0 +1,18 @@
+<div class="product-container" [ngStyle]="{backgroundColor: product.available === 'Available' ? '#D5F5E3' : '#FADBD8'}">
+    <div class="image-container"><img [src]="product.image" alt="" style="max-height: 50px; max-width: 50px"></div>
+    <div>
+        <div class="name-container"><h6>{{product.name}}</h6></div>
+        <div class="detailContainer">
+            <div class="details" [ngStyle]="{color: product.available === 'Available' ? 'Green' : 'Red'}">{{ product.available }}</div>
+            <div class="details"><b>Price:</b>${{ product.price }}</div>
+            <div class="details"><b>Color:</b>{{ product.color }}</div>
+        </div>
+    </div>
+    <div class="options">
+        <button class="btn btn-success">Show Details</button>
+        <button class="btn btn-warning" *ngIf="product.available === 'Available'; else notifyme">Buy Now</button>
+        <ng-template #notifyme>
+            <button class="btn btn-danger">Notify me</button>
+        </ng-template>
+    </div>
+</div>

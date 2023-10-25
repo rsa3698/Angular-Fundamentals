@@ -1,0 +1,9 @@
+<!-- <div *ngFor="let item of [1 ,3, 5, 17, 20]">
+    <p>Number is: {{ item }}</p>
+</div> -->
+<app-filter [all]="totalProductCount" [inStock]="totalProductInStock" [outStock]="totalProductOutStock" (selectedFilterRadioButtonChanged)="onFilterChanged($event)"></app-filter>
+<div *ngFor="let product of products; let i = index" (click)="selectedProduct = product">
+    <!-- <p>{{ i }}</p> -->
+    <!-- <app-product-detail  [product]="product" *ngIf="selectedFilterRadioButton === 'All' || product.available.toString() === selectedFilterRadioButton"></app-product-detail> -->
+    <app-product-detail  [product]="product" *ngIf="searchText === '' || product.name.toLowerCase().includes(searchText)" #productDetailComponent></app-product-detail>
+</div>
